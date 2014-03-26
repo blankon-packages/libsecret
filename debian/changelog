@@ -1,0 +1,155 @@
+libsecret (0.18-1blankon1) tambora; urgency=low
+
+  * New upstream release
+  * Merge with Debian Unstable
+
+ -- Mahyuddin Idram Ahmad <dotovr@di.blankon.in>  Wed, 26 Mar 2014 18:24:43 +0700
+
+libsecret (0.18-1) unstable; urgency=low
+
+  [ Jeremy Bicha ]
+  * debian/rules:
+    - Build with --disable-silent-rules for a useful build log
+  * Update homepage
+
+  [ Michael Biebl ]
+  * New upstream release (0.16).
+  * Refresh patches.
+
+  [ Jackson Doak ]
+  * debian/control:
+    - Improve description of libsecret-tools. Closes: #711475
+
+  [ Andreas Henriksson ]
+  * New upstream release (0.18)
+  * Bump glib build-dependency to >= 2.38.0 according to configure.ac
+  * Drop debian/patches, both patches obsolete.
+    - debian/patches/dont_run_gjs_tests.patch
+    - debian/patches/introspection-dir.patch
+  * Bump Standards-Version to 3.9.5
+  * Update debian/libsecret-1-0.symbols
+    - Missing secret_service_new* symbols...
+    - See https://git.gnome.org/browse/libsecret/commit/?id=1758194f26a41
+    - "The _new() suffix confuses vala and gobject introspection [...]
+       This is an API/API break, but its to the portion of the library
+       marked as unstable. [...]"
+    - Also adds several new symbols
+  * Add "Breaks: libsecret (<< 3.12)" to libsecret-1-0 to handle above.
+  * Install Secret g-i typelib file from multiarch path.
+  * debian/rules: quote the wildcard argument of find to avoid premature exp.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 23 Mar 2014 20:43:29 +0100
+
+libsecret (0.15-2) unstable; urgency=low
+
+  * Upload to unstable.
+  * Don't hard-code dpkg in Pre-Depends but use ${misc:Pre-Depends} instead.
+  * Add Vcs-* fields.
+  * Drop alternative Build-Depends on valac-0.18. No longer required since
+    valac is now recent enough.
+  * Bump Standards-Version to 3.9.4. No further changes.
+
+ -- Michael Biebl <biebl@debian.org>  Fri, 24 May 2013 17:34:58 +0200
+
+libsecret (0.15-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sun, 24 Mar 2013 13:27:34 +0100
+
+libsecret (0.14-1) experimental; urgency=low
+
+  [ Rico Tzschichholz ]
+  * debian/control:
+    - Add multiarch annotations and pre-depends
+
+  [ Andreas Henriksson ]
+  * New upstream release.
+  * Update debian/libsecret-1-0.symbols: added SECMEM_pool_data_v1_0@Base 0.14
+
+ -- Andreas Henriksson <andreas@fatal.se>  Sat, 16 Mar 2013 14:53:57 +0100
+
+libsecret (0.11-1) experimental; urgency=low
+
+  * New upstrema release
+
+ -- Sjoerd Simons <sjoerd@debian.org>  Fri, 02 Nov 2012 22:10:15 +0100
+
+libsecret (0.10-1) experimental; urgency=low
+
+  * Upload to Debian
+
+ -- Sjoerd Simons <sjoerd@debian.org>  Fri, 05 Oct 2012 20:59:47 +0200
+
+libsecret (0.9-0ubuntu3) quantal; urgency=low
+
+  * debian/control:
+    - Build-depend on gtk-doc-tools instead of xsltproc
+    - Don't explicitly build-depend on gir1.2-glib-2.0
+    - Add homepage
+  * debian/libsecret-1-dev.install: Install vapi files
+
+ -- Jeremy Bicha <jbicha@ubuntu.com>  Thu, 23 Aug 2012 00:05:09 -0400
+
+libsecret (0.9-0ubuntu2) quantal; urgency=low
+
+  * debian/control: Build-Depends on xsltproc
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 20 Aug 2012 18:24:52 +0200
+
+libsecret (0.9-0ubuntu1) quantal; urgency=low
+
+  * New upstream version
+  * debian/libsecret-tools.install:
+    - install the manpage
+  * debian/patches/copying-test.patch:
+    - dropped, the fix is in the new version
+  * debian/patches/git_test_issue.patch:
+    - dropped, the fix is in the new version
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 20 Aug 2012 17:32:50 +0200
+
+libsecret (0.8-0ubuntu2) quantal; urgency=low
+
+  * debian/control:
+    - Build-Depends on dbus-test-runner, python-dbus, python-gobject
+  * debian/patches/dont_run_gjs_tests.patch:
+    - don't run gjs tests since gjs is in universe
+  * debian/rules:
+    - enable tests but don't fail build on issues yet, there are issues
+      when running them under fakeroot for example (dbus doesn't like it)
+  * debian/copyright: drop reference to common-license BSD 
+    (lintian warning)
+
+ -- Sebastien Bacher <seb128@debian.org>  Tue, 07 Aug 2012 16:43:10 +0200
+
+libsecret (0.8-0ubuntu1) quantal; urgency=low
+
+  * New upstream version
+  * Install libsecret-unstable dev files as well
+  * debian/control: 
+    - updated some descriptions
+  * debian/copyright: 
+    - updated
+  * debian/libsecret-1-dev.install: 
+    - install the documentation
+  * debian/libsecret-1-0.symbols:
+    - updated for the new version
+  * debian/patches/git_test_issue.patch:
+    - git patch to fix a testsuite issue
+  * debian/patches/copying-test.patch:
+    - include COPYING.TESTS in the source (issue fixed in git)
+  * debian/rules:
+    - update test target but keep it commented, the dbus tests refuse
+      to work during the package build (but works fine run manually)
+    - clean files that are not shipped in binaries for --list-missing
+    - override dh_install with --list-missing
+    - use gir helper so Depends are right
+
+ -- Sebastien Bacher <seb128@ubuntu.com>  Mon, 06 Aug 2012 11:49:10 +0200
+
+libsecret (0.7-0ubuntu1) quantal; urgency=low
+
+  * Initial Release. (LP: #1018630)
+
+ -- Robert Ancell <robert.ancell@canonical.com>  Sat, 28 Jul 2012 17:51:13 +0200
